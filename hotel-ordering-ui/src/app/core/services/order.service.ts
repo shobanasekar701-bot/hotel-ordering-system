@@ -9,7 +9,7 @@ import { Order } from '../../models/order.model';
 })
 export class OrderService {
 
-  private apiUrl = 'http://localhost:8080/api/orders';
+  private apiUrl = '${environment.apiUrl}/orders';
 
   constructor(private http: HttpClient) {}
 
