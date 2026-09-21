@@ -1,0 +1,175 @@
+<div class="container py-4">
+
+  <h2 class="mb-4">
+    🧾 Checkout
+  </h2>
+
+  <div class="row">
+
+    <!-- Customer Details -->
+
+    <div class="col-md-7">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body">
+
+          <h5 class="mb-4">
+            Customer Details
+          </h5>
+
+          <form
+            [formGroup]="checkoutForm"
+            (ngSubmit)="placeOrder()">
+
+            <!-- Customer Name -->
+
+            <div class="mb-3">
+
+              <label class="form-label">
+                Customer Name
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                formControlName="customerName"
+                placeholder="Enter your name">
+
+              <div
+                class="text-danger mt-1"
+                *ngIf="
+                  checkoutForm.get('customerName')?.touched &&
+                  checkoutForm.get('customerName')?.invalid
+                ">
+
+                Customer name is required.
+
+              </div>
+
+            </div>
+
+
+            <!-- Mobile -->
+
+            <div class="mb-3">
+
+              <label class="form-label">
+                Mobile Number
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                formControlName="mobileNumber"
+                placeholder="Enter mobile number">
+
+              <div
+                class="text-danger mt-1"
+                *ngIf="
+                  checkoutForm.get('mobileNumber')?.touched &&
+                  checkoutForm.get('mobileNumber')?.invalid
+                ">
+
+                Enter a valid 10-digit mobile number.
+
+              </div>
+
+            </div>
+
+
+            <!-- Table -->
+
+            <div class="mb-3">
+
+              <label class="form-label">
+                Table Number
+              </label>
+
+              <input
+                type="number"
+                class="form-control"
+                formControlName="tableNumber"
+                placeholder="Example: 12">
+
+              <div
+                class="text-danger mt-1"
+                *ngIf="
+                  checkoutForm.get('tableNumber')?.touched &&
+                  checkoutForm.get('tableNumber')?.invalid
+                ">
+
+                Enter a valid table number.
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="btn btn-success w-100">
+
+              Place Order
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Order Summary -->
+
+    <div class="col-md-5">
+
+      <div class="card shadow-sm">
+
+        <div class="card-body">
+
+          <h5 class="mb-4">
+            Order Summary
+          </h5>
+
+          <div
+            *ngFor="let item of cartItems"
+            class="d-flex justify-content-between mb-2">
+
+            <span>
+              {{ item.product.name }}
+              × {{ item.quantity }}
+            </span>
+
+            <span>
+              ₹{{ item.product.price * item.quantity }}
+            </span>
+
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between">
+
+            <strong>
+              Subtotal
+            </strong>
+
+            <strong>
+              ₹{{ subtotal }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

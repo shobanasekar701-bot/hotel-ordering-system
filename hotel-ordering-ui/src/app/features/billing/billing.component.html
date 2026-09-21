@@ -1,0 +1,111 @@
+<div class="container mt-4" *ngIf="order">
+
+  <div class="card shadow-sm">
+
+    <div class="card-header text-center">
+      <h2>Hotel Bill</h2>
+      <p class="mb-0">
+        Order #{{ order.id }}
+      </p>
+    </div>
+
+    <div class="card-body">
+
+      <div class="row mb-4">
+
+        <div class="col-md-6">
+          <strong>Customer:</strong>
+          {{ order.customerName }}
+        </div>
+
+        <div class="col-md-6">
+          <strong>Table:</strong>
+          {{ order.tableNumber }}
+        </div>
+
+      </div>
+
+      <table class="table table-bordered">
+
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let item of order.items">
+
+            <td>
+              {{ item.menuItem.name }}
+            </td>
+
+            <td>
+              {{ item.quantity }}
+            </td>
+
+            <td>
+              ₹{{ item.price }}
+            </td>
+
+            <td>
+              ₹{{ (item.price || 0) * item.quantity }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="row justify-content-end">
+
+        <div class="col-md-5">
+
+          <div class="d-flex justify-content-between">
+            <span>Subtotal</span>
+            <strong>₹{{ order.subtotal }}</strong>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <span>Discount</span>
+            <strong>₹{{ discount }}</strong>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <span>GST ({{ gstRate }}%)</span>
+            <strong>₹{{ gst | number:'1.2-2' }}</strong>
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between">
+            <h4>Grand Total</h4>
+            <h4>₹{{ grandTotal | number:'1.2-2' }}</h4>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4">
+
+        <button
+          class="btn btn-primary"
+          (click)="printBill()">
+
+          Print Bill
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

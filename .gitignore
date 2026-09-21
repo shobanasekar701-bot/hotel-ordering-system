@@ -1,0 +1,45 @@
+# Angular
+hotel-ordering-ui/node_modules/
+hotel-ordering-ui/dist/
+hotel-ordering-ui/.angular/
+hotel-ordering-ui/coverage/
+
+# Local configuration - NEVER COMMIT
+**/application-local.properties
+
+# Angular logs
+hotel-ordering-ui/npm-debug.log*
+hotel-ordering-ui/yarn-debug.log*
+
+# Java / Spring Boot
+hotel-ordering-api/target/
+hotel-ordering-api/*.class
+
+# IDE
+.idea/
+*.iml
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Spring local configuration
+hotel-ordering-api/src/main/resources/application-local.properties
+hotel-ordering-api/src/main/resources/application-local.yml
+
+# Database backup files
+*.dump
+*.backup

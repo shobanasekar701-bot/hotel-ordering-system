@@ -1,0 +1,101 @@
+<div class="container mt-4" *ngIf="!loading && order">
+
+  <h2 class="mb-4">
+    Order #{{ order.id }}
+  </h2>
+
+  <div class="card shadow-sm">
+
+    <div class="card-body">
+
+      <h5>
+        Customer: {{ order.customerName }}
+      </h5>
+
+      <p>
+        Table: {{ order.tableNumber }}
+      </p>
+
+      <hr>
+
+      <h5 class="mb-4">Order Status</h5>
+
+      <div class="row text-center">
+
+        <div class="col">
+          <div class="rounded-circle bg-success text-white p-3">
+            ✓
+          </div>
+          <small>Order Placed</small>
+        </div>
+
+        <div class="col">
+          <div
+            class="rounded-circle p-3"
+            [class.bg-success]="
+              order.status === 'PREPARING' ||
+              order.status === 'READY' ||
+              order.status === 'COMPLETED'
+            "
+            [class.bg-secondary]="order.status === 'NEW'">
+            2
+          </div>
+          <small>Preparing</small>
+        </div>
+
+        <div class="col">
+          <div
+            class="rounded-circle p-3"
+            [class.bg-success]="
+              order.status === 'READY' ||
+              order.status === 'COMPLETED'
+            "
+            [class.bg-secondary]="
+              order.status !== 'READY' &&
+              order.status !== 'COMPLETED'
+            ">
+            3
+          </div>
+          <small>Ready</small>
+        </div>
+
+        <div class="col">
+          <div
+            class="rounded-circle p-3"
+            [class.bg-success]="order.status === 'COMPLETED'"
+            [class.bg-secondary]="order.status !== 'COMPLETED'">
+            4
+          </div>
+          <small>Completed</small>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div class="text-center">
+
+        <h4>
+          Current Status:
+          <span class="badge bg-primary">
+            {{ order.status }}
+          </span>
+        </h4>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div
+  *ngIf="!loading && !order"
+  class="container mt-4">
+
+  <div class="alert alert-danger">
+    Order not found.
+  </div>
+
+</div>
