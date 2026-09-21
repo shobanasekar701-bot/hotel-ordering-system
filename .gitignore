@@ -1,0 +1,30 @@
+# Angular / Node
+node_modules/
+dist/
+.angular/
+.cache/
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.class
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local configuration
+application-local.properties
